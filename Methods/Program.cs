@@ -25,14 +25,16 @@
 
 
             //(string name, int age) anketa;
+            //anketa.name = "Lera";
+            //anketa.age = 22;
 
-            //Console.Write("Введите имя: ");
-            //anketa.name = Console.ReadLine();
-            //Console.Write("Введите возраст цифрами: ");
-            //anketa.age = Convert.ToInt32(Console.ReadLine());
+            ////Console.Write("Введите имя: ");
+            ////anketa.name = Console.ReadLine();
+            ////Console.Write("Введите возраст цифрами: ");
+            ////anketa.age = Convert.ToInt32(Console.ReadLine());
 
-            //Console.WriteLine("Ваше имя: {0}", anketa.name);
-            //Console.WriteLine("Ваш возраст: {0}", anketa.age);
+            ////Console.WriteLine("Ваше имя: {0}", anketa.name);
+            ////Console.WriteLine("Ваш возраст: {0}", anketa.age);
 
             //string[] FavColors = new string[3];
 
@@ -42,8 +44,8 @@
             //}
 
 
-
-            //ShowColorArray(FavColors);
+            //ShowColors();
+            //ShowColors(FavColors);
 
 
             static string ShowColor(string username, int userage)
@@ -84,28 +86,36 @@
                 }
 
 
-            int[] array = GetArrayFromConsole();
-            Console.Write("Исходный массив: ");
-            foreach (int el in array)
-                Console.Write(el + " ");
-            array = SortArray(array);
-            Console.Write("\nОтсортированный массив: ");
-            foreach (int el in array)
-                Console.Write(el + " ");
+            //int[] array = GetArrayFromConsole();
+            //Console.Write("Исходный массив: ");
+            //foreach (int el in array)
+            //    Console.Write(el + " ");
+            //array = SortArray(array);
+            //Console.Write("\nОтсортированный массив: ");
+            //foreach (int el in array)
+            //    Console.Write(el + " ");
 
-            static void ShowColorArray(string[] colors)
+
+
+            static void ShowColors(string username = "Dave", params string[] favcolors)
             {
                 Console.WriteLine("Ваши любимые цвета: ");
-                foreach (string col in colors)
+                foreach (string col in favcolors)
                     Console.WriteLine(col);
+                Console.WriteLine(username);
             }
 
-            
+
+            int[] array = GetArrayFromConsole(3);
+            int[] sortedarray = SortArray(array);
+            PrintArray(sortedarray);
 
 
-            static int[] GetArrayFromConsole()
+
+            static int[] GetArrayFromConsole(int size = 5)
             {
-                var result = new int[5];
+                
+                var result = new int[size];
 
                 for (int i = 0; i < result.Length; i++)
                 {
@@ -130,6 +140,12 @@
                     }
                 }
                 return array;
+            }
+
+            static void PrintArray(int[] array)
+            {
+                foreach (int el in array)
+                    Console.Write(el + " ");
             }
 
         }
