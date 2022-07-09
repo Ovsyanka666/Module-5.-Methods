@@ -106,9 +106,9 @@
             }
 
 
-            int[] array = GetArrayFromConsole(3);
-            int[] sortedarray = SortArray(array);
-            PrintArray(sortedarray);
+            //int[] array = GetArrayFromConsole(3);
+            //int[] sortedarray = SortArray(array);
+            //PrintArray(sortedarray);
 
 
 
@@ -147,6 +147,36 @@
                 foreach (int el in array)
                     Console.Write(el + " ");
             }
+
+            //5.2.17
+            //Создайте метод ShowArray с параметрами: массив чисел, признак сортировки логического типа, необязательный параметр, по умолчанию ЛОЖЬ.
+            //Метод должен выводить массив на экран. Если значение признака сортировки равно ИСТИНА, то предварительно массив нужно отсортировать.
+
+            static void ShowArray(int[] nums, bool sort = false)
+            {
+                Console.Write("Ваш массив: ");
+
+                if (sort == true) {
+                    foreach (int el in nums)
+                    {
+                        for (byte i = 0; i < nums.Length - 1; i++)
+                        {
+                            if (nums[i] > nums[i + 1])
+                            {
+                                int temp = nums[i];
+                                nums[i] = nums[i + 1];
+                                nums[i + 1] = temp;
+                            }
+                        }
+                    }
+                }
+
+                foreach (int el in nums)
+                    Console.Write(el + " ");
+            }
+
+            int[] Test = GetArrayFromConsole(10);
+            ShowArray(Test, true);
 
         }
     }
