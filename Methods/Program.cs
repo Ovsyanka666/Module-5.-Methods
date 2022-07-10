@@ -105,14 +105,15 @@
                 Console.WriteLine(username);
             }
 
-
-            //int[] array = GetArrayFromConsole(3);
+            //int length = 6;
+            //int[] array = GetArrayFromConsole(ref length);
             //int[] sortedarray = SortArray(array);
             //PrintArray(sortedarray);
+            //Console.WriteLine("Lenght is " + length);
 
 
 
-            static int[] GetArrayFromConsole(int size = 5)
+            static int[] GetArrayFromConsole(ref int size)
             {
                 
                 var result = new int[size];
@@ -125,22 +126,7 @@
                 return result;
             }
 
-            static int[] SortArray(int[] array)
-            {
-                foreach (int el in array)
-                {
-                    for (byte i = 0; i < array.Length - 1; i++)
-                    {
-                        if (array[i] > array[i + 1])
-                        {
-                            int temp = array[i];
-                            array[i] = array[i + 1];
-                            array[i + 1] = temp;
-                        }
-                    }
-                }
-                return array;
-            }
+            
 
             static void PrintArray(int[] array)
             {
@@ -175,9 +161,130 @@
                     Console.Write(el + " ");
             }
 
-            int[] Test = GetArrayFromConsole(10);
-            ShowArray(Test, true);
+            //int[] Test = GetArrayFromConsole(10);
+            //ShowArray(Test, true);
 
+
+
+            //int MyAge = 22;
+            //ChangeAge(ref MyAge);
+            //Console.WriteLine(MyAge);
+
+            static void ChangeAge(ref int age)
+            {
+                Console.Write("Enter your age: ");
+                age = Convert.ToInt32(Console.ReadLine());
+
+            }
+
+            //string Name = "Евгения";
+            //GetName(out Name);
+            //Console.WriteLine(Name);
+
+            static void GetName(out string name)
+            {
+                Console.WriteLine("Введите имя ");
+                name = Console.ReadLine();
+
+            }
+
+
+
+            //var arr = new int[] { 1, 2, 3 };
+            //int Data = 0;
+            //BigDataOperation(arr, ref Data);
+
+            //Console.WriteLine(arr[0] + " данные " + Data);
+
+            //Напишите сигнатуру(объявление) метода GetAge с выходными параметрами Name и Age типов string и byte соответственно.
+
+            static void GetAge(out string Name, out byte Age)
+            {
+                Name = "kek";
+                Age = 69;
+            }
+
+            static void BigDataOperation(int[] arr, ref int data)
+            {
+                arr[0] = 4;
+                data = 15;
+            }
+
+            //Напишите объявление метода SumNumbers для суммирования четырех чисел, где: первое значение передается по ссылке и меняется,
+            //второе значение передается по ссылке и не меняется, третье значение является результатом суммирования двух первых и возвращается
+            //методом, а четвертое значение является обычным параметром, и на него умножается результат метода.
+            //Метод возвращает значения типа int, все входные параметры также имеют тип int и называются: num1...num4.
+
+            //int Num1 = 1, Num2 = 5, Num3 = 10, Num4 = 7;
+            //Console.WriteLine(SumNumbers(ref Num1, ref Num2, out Num3, Num4));
+
+            static int SumNumbers(ref int num1, ref int num2, out int num3, int num4)
+            {
+                num1 = Convert.ToInt32(Console.ReadLine());
+                num3 = num1 + num2;
+                int result = num1 + num2 + num3 + num4;
+                return result * num4; 
+            }
+
+            //Используйте код метода SortArray. Сейчас этот метод сортирует массив по возрастанию значения.
+            //Создайте методы SortArrayDesc и SortArrayAsc — сортировка массива от большего к меньшему и сортировка массива от меньшего к большему.
+
+            //Метод SortArray модифицируйте так, чтобы он вызвал оба этих метода.Результаты методов SortArrayAsc и SortArrayDesc должны представлять собой массивы.
+
+            //Метод SortArray должен иметь один входной параметр array и два выходных: sorteddesc и sortedasc.
+            int[] ArrayForSort = { 4, 3, 1, 2};
+            //int[] ArrayDown = new int[8];
+            //int[] ArrayUp = new int[8];
+            SortArray(ArrayForSort, out int[] ArrayDown, out int[] ArrayUp);
+            ShowArray(ArrayUp);
+            ShowArray(ArrayDown);
+
+
+            ArrayUp = SortArrayAsc(ArrayForSort);
+            ShowArray(ArrayUp);
+            ArrayDown = SortArrayDesc(ArrayForSort);
+            ShowArray(ArrayDown);
+            
+
+            static void SortArray(in int[] array, out int[] sorteddesc, out int[] sortedasc)
+            {                
+                sorteddesc = SortArrayDesc(array);
+                sortedasc = SortArrayAsc(array);
+            }
+
+            static int[] SortArrayDesc(int[] array)
+            {
+                foreach (int el in array)
+                {
+                    for (byte i = 0; i < array.Length - 1; i++)
+                    {
+                        if (array[i] < array[i + 1])
+                        {
+                            int temp = array[i];
+                            array[i] = array[i + 1];
+                            array[i + 1] = temp;
+                        }
+                    }
+                }
+                return array;
+            }
+
+            static int[] SortArrayAsc(int[] array)
+            {
+                foreach (int el in array)
+                {
+                    for (byte i = 0; i < array.Length - 1; i++)
+                    {
+                        if (array[i] > array[i + 1])
+                        {
+                            int temp1 = array[i];
+                            array[i] = array[i + 1];
+                            array[i + 1] = temp1;
+                        }
+                    }
+                }
+                return array;
+            }
         }
     }
 }
